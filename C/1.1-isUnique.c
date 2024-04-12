@@ -28,9 +28,11 @@ int main(int argc, char **argv) {
 	int ret = -1;
 	char str[MAXSIZE];
 
-	printf("Select option\n0 - WITHOUT auxiliary data structures\n1 - WITH auxiliary data structures\n\nOption:");
-	scanf("%d", &option);
-	fflush(stdin);
+	while(option != 0 && option != 1) {
+		printf("\nSelect option\n0 - WITHOUT auxiliary data structures\n1 - WITH auxiliary data structures\n\nOption:");
+		scanf("%d", &option);
+		fflush(stdin);
+	}
 
 	printf("Type in the string to be evaluated: ");
 	fgets(str, MAXSIZE, stdin);

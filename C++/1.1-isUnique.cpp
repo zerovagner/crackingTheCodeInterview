@@ -27,17 +27,19 @@ bool isUniqueWithoutDataStructures(string str) {
 }
 
 int main(int argc, char **argv) {
-	int willUseAuxiliaryDataStructures = -1;
+	int option = -1;
 	bool ret = false;
 	string str;
 
-	cout <<	"Select option\n0 - WITHOUT auxiliary data structures\n1 - WITH auxiliary data structures\n\nOption:";
-	cin >> willUseAuxiliaryDataStructures;
+	while(option != 0 && option != 1) {
+		cout <<	"\nSelect option\n0 - WITHOUT auxiliary data structures\n1 - WITH auxiliary data structures\n\nOption:";
+		cin >> option;
+	}
 
 	cout << endl << "Type in the string to be evaluated: ";
 	cin >> str;
 	
-	if(willUseAuxiliaryDataStructures)
+	if(option)
 		ret = isUnique(str);
 	else
 		ret = isUniqueWithoutDataStructures(str);
