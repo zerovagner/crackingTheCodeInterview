@@ -1,46 +1,46 @@
-#include<malloc.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-typedef struct Node {
-	int data;
-	Node *next;
-} Node;
+#include "LinkedList.h"
 
-void printLinkedList(Node *head) {
+void printLinkedList(node *head) {
 	while(head != NULL) {
 		printf("%d, ", head->data);
 		head = head->next;
 	}
 }
 
-void insertIntoUnsortedLinkedList(Node *head, int data){
-	Node *newNode = malloc(sizeof(Node));
+void insertIntoUnsortedLinkedList(node **head, int data){
+	node *newNode = malloc(sizeof(node));
 	if(newNode == NULL) {
 		printf("Unable to alloc mem for new node\n");
 	}
 	newNode->data = data;
-	newNode->next = NULL:
-	if(head == NULL) {
-		head = newNode;
+	newNode->next = NULL;
+	if(*head == NULL) {
+		*head = newNode;
 		return;
 	}
-	while(head->next != NULL)
-		head = head->next;
-	head->next = newNode;
+	node *curr = *head;
+	while(curr->next != NULL)
+		curr = curr->next;
+	curr->next = newNode;
 }
 
-void insertIntoSortedLinkedList(Node *head, int data) {
-	Node *newNode = malloc(sizeof(Node));
+void insertIntoSortedLinkedList(node **head, int data) {
+	node *newNode = malloc(sizeof(node));
 	if(newNode == NULL) {
 		printf("Unable to alloc mem for new node\n");
 	}
 	newNode->data = data;
-	newNode->next = NULL:
-	if(head == NULL) {
-		head = newNode;
+	newNode->next = NULL;
+	if(*head == NULL) {
+		*head = newNode;
 		return;
 	}
-	while(head->next != NULL && head->data <= data)
-		head = head->next;
-	newNode->next = head->next;
-	head->next = newNode;
+	node *curr = *head;
+	while(curr->next != NULL && curr->data <= data)
+		curr = curr->next;
+	newNode->next = curr->next;
+	curr->next = newNode;
 }
